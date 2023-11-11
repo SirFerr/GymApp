@@ -25,12 +25,12 @@ import androidx.navigation.NavHostController
 
 @Preview
 @Composable
-fun signUpScreenSecondPreview(){
+fun signUpScreenSecondPreview() {
     Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
     ) {
-    signUpSecondScreen(null)}
+        signUpSecondScreen(null)
+    }
 }
 
 
@@ -40,7 +40,7 @@ fun signUpSecondScreen(navController: NavHostController?) {
 
 
     val state = remember { mutableStateOf(true) }
-    val change= { state.value = !state.value }
+    val change = { state.value = !state.value }
 
 
     var textWeight by remember { mutableStateOf("") }
@@ -50,43 +50,36 @@ fun signUpSecondScreen(navController: NavHostController?) {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
-    )
-    {
+    ) {
 
 
-        TextField(
-            value = textWeight,
+        TextField(value = textWeight,
             label = { Text(text = "Weight") },
             onValueChange = { textWeight = it })
-        TextField(
-            value = textHeight,
+        TextField(value = textHeight,
             label = { Text(text = "Height") },
             onValueChange = { textHeight = it })
 
 
-        Column(Modifier.selectableGroup()){
-            Row (
+        Column(Modifier.selectableGroup()) {
+            Row(
                 horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically){
-                RadioButton(
-                    selected = state.value,
-                    onClick = { state.value = true }
-                )
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                RadioButton(selected = state.value, onClick = { state.value = true })
                 Text("Male", fontSize = 22.sp)
             }
-            Row (
+            Row(
                 horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically){
-                RadioButton(
-                    selected = !state.value,
-                    onClick = { state.value = false }
-                )
-                Text("Female",  fontSize = 22.sp)
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                RadioButton(selected = !state.value, onClick = { state.value = false })
+                Text("Female", fontSize = 22.sp)
             }
         }
-            Button(onClick = { navController?.navigate("loginScreen") }) {
-                Text(text = "SignUp")
-            }
+        Button(onClick = { navController?.navigate("loginScreen") }) {
+            Text(text = "SignUp")
+        }
 
     }
 }

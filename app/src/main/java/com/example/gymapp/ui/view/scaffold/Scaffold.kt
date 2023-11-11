@@ -15,42 +15,31 @@ import androidx.navigation.NavHostController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun scaffold(
-    navController: NavHostController? = null,
-    screen: @Composable (PaddingValues) -> Unit
+    navController: NavHostController? = null, screen: @Composable (PaddingValues) -> Unit
 ) {
 
 
-    Scaffold(
-        content = { innerPadding ->
+    Scaffold(content = { innerPadding ->
 
-            screen(innerPadding)
+        screen(innerPadding)
 
-        },
-        bottomBar = {
-            BottomAppBar {
+    }, bottomBar = {
+        BottomAppBar {
 
-                IconButton(onClick = {
-
-                })
-                {
-                    Icon(
-                        Icons.Filled.Home, contentDescription =
-                        "Home"
-                    )
-                }
-                IconButton(onClick = {
-
-
-                })
-                {
-                    Icon(
-                        Icons.Filled.Star, contentDescription =
-                        "Second"
-                    )
-                }
-
-
+            IconButton(onClick = {}) {
+                Icon(
+                    Icons.Filled.Home, contentDescription = "Home"
+                )
             }
+
+            IconButton(onClick = {}) {
+                Icon(
+
+                    Icons.Filled.Star, contentDescription = "Second"
+                )
+            }
+
+
         }
-    )
+    })
 }

@@ -1,12 +1,9 @@
 package com.example.gymapp.ui.view.screen.main
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -25,46 +22,38 @@ import androidx.navigation.NavHostController
 
 @Preview
 @Composable
-fun mainScreenPreview() {
+fun homeScreenPreview() {
     Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
     ) {
-        mainScreen(null)
+        homeScreen(null)
     }
 }
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun mainScreen(
-    navController: NavHostController?,
-    paddingValues: PaddingValues? = PaddingValues.Absolute()
+fun homeScreen(
+    navController: NavHostController?
 ) {
 
     var textEmail by remember { mutableStateOf("") }
     var textPassword by remember { mutableStateOf("") }
 
-    Log.d("g", paddingValues.toString())
 
 
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(paddingValues!!),
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
-    )
-    {
+    ) {
 
 
-        TextField(
-            value = textEmail,
+        TextField(value = textEmail,
             label = { Text(text = "Email") },
             onValueChange = { textEmail = it })
-        TextField(
-            value = textPassword,
+        TextField(value = textPassword,
             label = { Text(text = "Password") },
             onValueChange = { textPassword = it })
 
@@ -74,12 +63,11 @@ fun mainScreen(
 
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
-        )
-        {
+        ) {
             Button(onClick = { /*TODO*/ }) {
                 Text(text = "LogIn")
             }
-            Button(onClick = { navController?.navigate("signupScreen") }) {
+            Button(onClick = { }) {
                 Text(text = "SignUp")
             }
         }

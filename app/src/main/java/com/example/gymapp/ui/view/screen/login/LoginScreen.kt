@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -19,7 +18,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 
 @Preview
@@ -29,7 +27,8 @@ fun loginScreenPreview() {
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-    loginScreen(null)}
+        loginScreen(null)
+    }
 }
 
 
@@ -68,7 +67,7 @@ fun loginScreen(navController: NavHostController?) {
             verticalArrangement = Arrangement.SpaceEvenly
         )
         {
-            Button(onClick = { navController?.navigate("mainScreen") }) {
+            Button(onClick = { navController?.navigate("main") }) {
                 Text(text = "LogIn")
             }
             Button(onClick = { navController?.navigate("signupScreen") }) {
