@@ -1,8 +1,9 @@
-package com.example.gymapp.ui.view.screen.signUp
+package com.example.gymapp.ui.view.screen.first.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -21,23 +22,25 @@ import androidx.navigation.NavHostController
 
 @Preview
 @Composable
-fun signUpScreenPreview() {
+fun loginScreenPreview() {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-    signUpScreen(null)}
+        loginScreen(null)
+    }
 }
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun signUpScreen(navController: NavHostController?) {
-
+fun loginScreen(navController: NavHostController?) {
 
     var textEmail by remember { mutableStateOf("") }
-    var textPhoneNumber by remember { mutableStateOf("") }
     var textPassword by remember { mutableStateOf("") }
+
+
+
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -52,19 +55,30 @@ fun signUpScreen(navController: NavHostController?) {
             label = { Text(text = "Email") },
             onValueChange = { textEmail = it })
         TextField(
-            value = textPhoneNumber,
-            label = { Text(text = "Phone number") },
-            onValueChange = { textPhoneNumber = it })
-        TextField(
             value = textPassword,
             label = { Text(text = "Password") },
             onValueChange = { textPassword = it })
 
 
+        Column(
+            modifier = Modifier.fillMaxWidth(),
 
-        Button(onClick = { navController?.navigate("signupSecondScreen") }) {
-            Text(text = "Next")
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceEvenly
+        )
+        {
+            Button(onClick = {
+                navController?.navigate("main") {
+                    popUpTo("loginScreen") {
+                        inclusive = true
+                    }
+                }
+            }) {
+                Text(text = "LogIn")
+            }
+            Button(onClick = { navController?.navigate("signupScreen") }) {
+                Text(text = "SignUp")
+            }
         }
-
     }
 }

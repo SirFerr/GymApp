@@ -1,4 +1,4 @@
-package com.example.gymapp.ui.view.screen.signUp
+package com.example.gymapp.ui.view.screen.first.signUp
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

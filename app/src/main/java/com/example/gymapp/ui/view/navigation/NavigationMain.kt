@@ -8,11 +8,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.gymapp.ui.view.scaffold.scaffold
+import com.example.gymapp.ui.view.screen.main.account.accountScreen
+import com.example.gymapp.ui.view.screen.main.accountSettings.accountSettingScreen
 import com.example.gymapp.ui.view.screen.main.homeScreen
 
 
 @Composable
-fun navigationWithScaffold(navControllerFirst: NavHostController): NavHostController {
+fun navigationMain(firstNavController: NavHostController): NavHostController {
     val navController = rememberNavController()
     scaffold(navController = navController, screen = { innerPadding ->
         NavHost(
@@ -22,6 +24,17 @@ fun navigationWithScaffold(navControllerFirst: NavHostController): NavHostContro
             composable("homeScreen") {
                 homeScreen(
                     navController = navController,
+                )
+            }
+            composable("accountScreen") {
+                accountScreen(
+                    navController = navController,
+                )
+            }
+            composable("accountSettingsScreen") {
+                accountSettingScreen(
+                    navController,
+                    firstNavController
                 )
             }
         }

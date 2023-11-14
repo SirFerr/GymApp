@@ -2,6 +2,7 @@ package com.example.gymapp.ui.view.scaffold
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.BottomAppBar
@@ -26,7 +27,7 @@ fun scaffold(
     }, bottomBar = {
         BottomAppBar {
 
-            IconButton(onClick = {}) {
+            IconButton(onClick = { navController?.navigate("homeScreen") }) {
                 Icon(
                     Icons.Filled.Home, contentDescription = "Home"
                 )
@@ -39,6 +40,12 @@ fun scaffold(
                 )
             }
 
+            IconButton(onClick = { navController?.navigate("accountScreen") }) {
+                Icon(
+
+                    Icons.Filled.AccountCircle, contentDescription = "account"
+                )
+            }
 
         }
     })

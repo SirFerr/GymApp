@@ -5,9 +5,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.gymapp.ui.view.screen.login.loginScreen
-import com.example.gymapp.ui.view.screen.signUp.signUpScreen
-import com.example.gymapp.ui.view.screen.signUp.signUpSecondScreen
+import com.example.gymapp.ui.view.screen.first.login.loginScreen
+import com.example.gymapp.ui.view.screen.first.signUp.signUpScreen
+import com.example.gymapp.ui.view.screen.first.signUp.signUpSecondScreen
 
 
 @Composable
@@ -17,7 +17,7 @@ fun navigation(): NavHostController {
         composable("loginScreen") { loginScreen(navController) }
         composable("signupScreen") { signUpScreen(navController) }
         composable("signupSecondScreen") { signUpSecondScreen(navController) }
-        composable("main") { navigationWithScaffold(navController) }
+        composable("main") { navigationMain(navController) }
     }
 
     return navController
