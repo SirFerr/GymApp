@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -18,27 +16,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
+import com.example.gymapp.ui.view.screen.first.spacer
 
-@Preview
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun signUpScreenPreview() {
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
-    ) {
-        signUpScreen(null)
-    }
+    signUpScreen()
 }
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun signUpScreen(navController: NavHostController?) {
+fun signUpScreen(navController: NavHostController? = null) {
 
 
     var textEmail by remember { mutableStateOf("") }
     var textPhoneNumber by remember { mutableStateOf("") }
     var textPassword by remember { mutableStateOf("") }
+    spacer {
+
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -67,5 +63,6 @@ fun signUpScreen(navController: NavHostController?) {
             Text(text = "Next")
         }
 
+    }
     }
 }

@@ -3,11 +3,8 @@ package com.example.gymapp.ui.view.screen.first.login
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -19,54 +16,45 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
+import com.example.gymapp.ui.view.screen.first.spacer
 
-@Preview
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun loginScreenPreview() {
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
-    ) {
-        loginScreen(null)
-    }
+
+    loginScreen()
+
 }
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun loginScreen(navController: NavHostController?) {
+fun loginScreen(navController: NavHostController? = null) {
 
     var textEmail by remember { mutableStateOf("") }
     var textPassword by remember { mutableStateOf("") }
 
 
 
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
-    )
-    {
-
-
-        TextField(
-            value = textEmail,
-            label = { Text(text = "Email") },
-            onValueChange = { textEmail = it })
-        TextField(
-            value = textPassword,
-            label = { Text(text = "Password") },
-            onValueChange = { textPassword = it })
+    spacer {
 
 
         Column(
-            modifier = Modifier.fillMaxWidth(),
-
+            modifier = Modifier
+                .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
         )
         {
+
+            TextField(
+                value = textEmail,
+                label = { Text(text = "Email") },
+                onValueChange = { textEmail = it })
+            TextField(
+                value = textPassword,
+                label = { Text(text = "Password") },
+                onValueChange = { textPassword = it })
             Button(onClick = {
                 navController?.navigate("main") {
                     popUpTo("loginScreen") {
@@ -79,6 +67,8 @@ fun loginScreen(navController: NavHostController?) {
             Button(onClick = { navController?.navigate("signupScreen") }) {
                 Text(text = "SignUp")
             }
+
         }
+
     }
 }
