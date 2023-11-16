@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.gymapp.ui.view.screen.first.spacer
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
@@ -44,68 +45,71 @@ fun accountSettingScreen(
     var textWeight by remember { mutableStateOf("") }
     var textHeight by remember { mutableStateOf("") }
 
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
-    ) {
+    spacer {
 
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(5F),
+            modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
-            TextField(value = textWeight,
-                label = { Text(text = "Weight") },
-                onValueChange = { textWeight = it })
-            TextField(value = textHeight,
-                label = { Text(text = "Height") },
-                onValueChange = { textHeight = it })
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(5F),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
+                TextField(value = textWeight,
+                    label = { Text(text = "Weight") },
+                    onValueChange = { textWeight = it })
+                TextField(value = textHeight,
+                    label = { Text(text = "Height") },
+                    onValueChange = { textHeight = it })
 
 
-            Column(Modifier.selectableGroup()) {
-                Row(
-                    horizontalArrangement = Arrangement.Start,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    RadioButton(selected = state.value, onClick = { state.value = true })
-                    Text("Male", fontSize = 22.sp)
+                Column(Modifier.selectableGroup()) {
+                    Row(
+                        horizontalArrangement = Arrangement.Start,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        RadioButton(selected = state.value, onClick = { state.value = true })
+                        Text("Male", fontSize = 22.sp)
+                    }
+                    Row(
+                        horizontalArrangement = Arrangement.Start,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        RadioButton(selected = !state.value, onClick = { state.value = false })
+                        Text("Female", fontSize = 22.sp)
+                    }
                 }
-                Row(
-                    horizontalArrangement = Arrangement.Start,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    RadioButton(selected = !state.value, onClick = { state.value = false })
-                    Text("Female", fontSize = 22.sp)
+
+                Button(onClick = {
+                }) {
+                    Text(text = "Save changes")
                 }
             }
 
-            Button(onClick = {
-            }) {
-                Text(text = "Save changes")
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(1F),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Button(onClick = {
+                    firstNavController?.navigate("loginScreen") {
+                        popUpTo("main") { inclusive = true }
+
+                    }
+                }) {
+                    Text(text = "LogOut")
+                }
             }
+
+
         }
-
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1F),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Button(onClick = {
-                firstNavController?.navigate("loginScreen") {
-                    popUpTo("main") { inclusive = true }
-
-                }
-            }) {
-                Text(text = "LogOut")
-            }
-        }
-
-
     }
 }

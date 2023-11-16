@@ -37,24 +37,33 @@ fun homeScreen(
 
 
 
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
 
-            LazyColumn{
-                repeat(100) {
-                    item{
-                        Column (modifier = Modifier.fillMaxSize().padding(10.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.SpaceEvenly){
-                            Text("$it")
+        LazyColumn {
+            repeat(100) {
+                item {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(it.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Text(
+                            "item ${
+                                it * it
+                            }"
+                        )
 
-                        }
                     }
                 }
             }
+        }
 
 
     }
